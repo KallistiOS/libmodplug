@@ -34,5 +34,12 @@ OBJS=	tables.o         \
 
 KOS_CFLAGS += -I../include/modplug -DMODPLUG_BASIC_SUPPORT -DFASTSOUNDLIB
 
+defaultall: create_kos_link $(OBJS) subdirs linklib
+
 include $(KOS_BASE)/addons/Makefile.prefab
+
+# creates the kos link to the headers
+create_kos_link:
+	rm -f ../include/modplug
+	ln -s ../libmodplug/include ../include/modplug
 
